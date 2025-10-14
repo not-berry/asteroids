@@ -9,24 +9,23 @@ class Bullet extends GameObject{
     //vel = myShip.dir.copy();
     vel.setMag(10);
     
-    loc.add(vel.x*3.5, vel.y*3);
+    loc.add(vel.x*3.5, vel.y*3.5);
+    
+    d = 5;
   }
   
   void show() {
     c(white, noFill, 5);
-    circle(loc.x, loc.y, 5);
+    circle(loc.x, loc.y, d);
   }
   
   void act() {
-    loc.add(vel);
+    loc.add(vel.x*2, vel.y*2);
     
     time--;
     if(time == 0) lives = 0;
     
-    if(loc.y < -50) loc.y = height+50;
-    if(loc.y > height+50) loc.y = -50;
-    if(loc.x < -50) loc.x = width+50;
-    if(loc.x > width+50) loc.x = -50;
+    wrapAround(50);
   }
   
 }

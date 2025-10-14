@@ -30,13 +30,14 @@ class Ship extends GameObject{
     
     if(upkey) vel.add(dir);
     if(downkey) vel.sub(dir);
-    if(leftkey) dir.rotate(radians(-5));
-    if(rightkey) dir.rotate(radians(5));
+    if(leftkey) dir.rotate(radians(-3));
+    if(rightkey) dir.rotate(radians(3));
     
-    if(loc.y < -50) loc.y = height+50;
-    if(loc.y > height+50) loc.y = -50;
-    if(loc.x < -50) loc.x = width+50;
-    if(loc.x > width+50) loc.x = -50;
+    //if(vel.x >= 1) vel.x = 1;
+    //if(vel.y >= 1) vel.y = 1;
+    
+    
+    wrapAround(50);
     
     shoot();
   }

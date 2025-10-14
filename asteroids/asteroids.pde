@@ -24,6 +24,9 @@ void setup() {
   objects = new ArrayList();
   myShip = new Ship();
   objects.add(myShip);
+  objects.add(new Meteor());
+  objects.add(new Meteor());
+  objects.add(new Meteor());
 }
 
 void draw() {
