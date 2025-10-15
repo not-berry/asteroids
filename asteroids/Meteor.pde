@@ -39,7 +39,7 @@ class Meteor extends GameObject{
   void act() {
     loc.add(vel);
     
-    wrapAround(75);
+    wrapAround(100);
     
     checkForCollisions();
     
@@ -72,15 +72,16 @@ class Meteor extends GameObject{
     s.beginShape();
     s.noFill();
     s.stroke(white);
-    float rx = random(-2,2); float ry = random(-2,2);
+    float r = 10;
+    float rx = random(-r,r); float ry = random(-r,r);
     s.vertex((-17+ry)*lives, (17+ry)*lives);
-    s.vertex((0+random(-2,2))*lives,(25+random(-2,2))*lives);
-    s.vertex((17+random(-2,2))*lives, (17+random(-2,2))*lives);
-    s.vertex((25+random(-2,2))*lives,(0+random(-2,2))*lives);
-    s.vertex((17+random(-2,2))*lives, (-17+random(-2,2))*lives);
-    s.vertex((0+random(-2,2))*lives,(-25+random(-2,2))*lives);
-    s.vertex((-17+random(-2,2))*lives, (-17+random(-2,2))*lives);
-    s.vertex((-25+random(-2,2))*lives,(0+random(-2,2))*lives);
+    s.vertex(0,(25+random(-r,r))*lives);
+    s.vertex((17+random(-r,r))*lives, (17+random(-r,r))*lives);
+    s.vertex((25+random(-r,r))*lives,0);
+    s.vertex((17+random(-r,r))*lives, (-17+random(-r,r))*lives);
+    s.vertex(0,(-25+random(-r,r))*lives);
+    s.vertex((-17+random(-r,r))*lives, (-17+random(-r,r))*lives);
+    s.vertex((-25+random(-r,r))*lives,0);
     s.vertex((-17+ry)*lives, (17+ry)*lives);
     s.endShape();
   }

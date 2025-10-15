@@ -47,6 +47,8 @@ class Ship extends GameObject{
     
     //px = loc.x; py = loc.y;
     
+    if(upkey && abs(bulletCooldown) % 5 == 0) partical.add(new ShipThrust());
+    
     wrapAround(50);
     
     shoot();
@@ -56,7 +58,6 @@ class Ship extends GameObject{
     if(spacekey && bulletCooldown <=0) {
       objects.add(new Bullet() );
       bulletCooldown = 60;
-      partical.add(new ShipThrust());
     }
   }
 }
