@@ -1,5 +1,8 @@
 class Meteor extends GameObject{
   
+  PShape s;
+  float rotation;
+  boolean add;
   Meteor() {
     super(random(width),random(height), 1,1, 3);
     if(round(random(1)) == 0) loc.x = -75;
@@ -7,6 +10,9 @@ class Meteor extends GameObject{
     vel.setMag(random(1,3));
     vel.rotate(random(radians(360)));
     d = lives*50;
+    numOfAst += 1;
+    leftorright();
+    shaped();
   }
   
   Meteor(float x, float y, float l) {
@@ -14,12 +20,20 @@ class Meteor extends GameObject{
     vel.setMag(random(1,3));
     vel.rotate(random(radians(360)));
     d = lives*50;
+    leftorright();
+    shaped();
   }
   
   void show() {
     c(white,black,5);
-    circle(loc.x, loc.y, d);
-    line(loc.x, loc.y, loc.x+d/2, loc.y);
+    pushMatrix();
+    translate(loc.x,loc.y);
+    rotate(radians(rotation));
+    //circle(0, 0, d);
+    //line(0, 0, d/2, 0);
+    shape(s, 0,0);
+    popMatrix();
+    
   }
   
   void act() {
@@ -28,6 +42,9 @@ class Meteor extends GameObject{
     wrapAround(75);
     
     checkForCollisions();
+    
+    if(add) rotation += abs(vel.x)+abs(vel.y);
+    else rotation -= abs(vel.x)+abs(vel.y);
   }
   
   void checkForCollisions() {
@@ -35,13 +52,36 @@ class Meteor extends GameObject{
       GameObject obj = objects.get(i);
       if(obj instanceof Bullet) {
         if(dist(loc.x,loc.y, obj.loc.x,obj.loc.y) < d/2 + obj.d/2) {
+          score++;
           if(lives > 1) {
             objects.add(new Meteor(loc.x, loc.y, lives-1));
             objects.add(new Meteor(loc.x, loc.y, lives-1));
-          }
+          } else numOfAst -= 0.25;
           lives = obj.lives = 0;
         }
       }
     }
+  }
+  
+  void leftorright() {
+    add = true;
+    if(round(random(1)) == 0) add = false;
+  }
+  void shaped() {
+    s = createShape();
+    s.beginShape();
+    s.noFill();
+    s.stroke(white);
+    float rx = random(-2,2); float ry = random(-2,2);
+    s.vertex((-17+ry)*lives, (17+ry)*lives);
+    s.vertex((0+random(-2,2))*lives,(25+random(-2,2))*lives);
+    s.vertex((17+random(-2,2))*lives, (17+random(-2,2))*lives);
+    s.vertex((25+random(-2,2))*lives,(0+random(-2,2))*lives);
+    s.vertex((17+random(-2,2))*lives, (-17+random(-2,2))*lives);
+    s.vertex((0+random(-2,2))*lives,(-25+random(-2,2))*lives);
+    s.vertex((-17+random(-2,2))*lives, (-17+random(-2,2))*lives);
+    s.vertex((-25+random(-2,2))*lives,(0+random(-2,2))*lives);
+    s.vertex((-17+ry)*lives, (17+ry)*lives);
+    s.endShape();
   }
 }

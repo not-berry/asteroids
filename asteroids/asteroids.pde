@@ -4,7 +4,10 @@ color black = 0;
 color white = 255;
 color noStroke = #644949;
 color noFill = #5F4444;
-color blue = #23A8CB;
+color blue = #3576E3;
+color yellow = #E3BA35;
+color orange = #E37835;
+color red = #E34335;
 
 String mode = "game";
 
@@ -12,6 +15,8 @@ String mode = "game";
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 Ship myShip;
 
+float numOfAst = 0;
+float score = 0;
 
 float bulletCooldown = 10;
 
@@ -20,13 +25,11 @@ ArrayList<GameObject> objects;
 void setup() {
   size(800,800);
   imageMode(CENTER);
+  textAlign(LEFT, CENTER);
   strokeWeight(5);
   objects = new ArrayList();
   myShip = new Ship();
   objects.add(myShip);
-  objects.add(new Meteor());
-  objects.add(new Meteor());
-  objects.add(new Meteor());
 }
 
 void draw() {

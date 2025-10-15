@@ -4,7 +4,7 @@ class Bullet extends GameObject{
   
   Bullet() {
     super(myShip.loc.copy(), myShip.dir.copy(), 1);
-    time = 50;
+    time = 40;
     //loc = new PVector(myShip.loc.x, myShip.loc.y);
     //vel = myShip.dir.copy();
     vel.setMag(10);
@@ -20,7 +20,7 @@ class Bullet extends GameObject{
   }
   
   void act() {
-    loc.add(vel.x*2, vel.y*2);
+    loc.add(vel);
     
     time--;
     if(time == 0) lives = 0;
