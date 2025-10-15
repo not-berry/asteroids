@@ -22,6 +22,8 @@ float bulletCooldown = 10;
 
 ArrayList<GameObject> objects;
 
+ArrayList<Particals> partical;
+
 void setup() {
   size(800,800);
   imageMode(CENTER);
@@ -30,6 +32,8 @@ void setup() {
   objects = new ArrayList();
   myShip = new Ship();
   objects.add(myShip);
+  
+  partical = new ArrayList();
 }
 
 void draw() {

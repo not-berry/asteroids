@@ -8,6 +8,14 @@ void game() {
     if(currentObject.lives <= 0) objects.remove(i);
   }
   
+  for(int i = 0; i < partical.size(); i++) {
+    Particals currentObject = partical.get(i);
+    currentObject.show();
+    currentObject.act();
+    print(i + "\n");
+  }
+    
+  
   if(numOfAst <= 3 && int(random(200)) == 0) objects.add(new Meteor());
   
   textSize(100);

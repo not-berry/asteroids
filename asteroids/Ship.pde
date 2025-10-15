@@ -20,7 +20,7 @@ class Ship extends GameObject{
     stroke(white);
     triangle(-15,-18, -15,18, 25,0);
     circle(7,0, 10);
-    rect(-15,-7, -6,14);
+    rect(-15,-7, -3,14);
     triangle(-12,-17, 0,-14, -10,-22);
     triangle(-12,17, 0,14, -10,22);
     
@@ -56,6 +56,7 @@ class Ship extends GameObject{
     if(spacekey && bulletCooldown <=0) {
       objects.add(new Bullet() );
       bulletCooldown = 60;
+      partical.add(new ShipThrust());
     }
   }
 }
