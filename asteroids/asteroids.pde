@@ -28,6 +28,8 @@ void setup() {
   size(800,800);
   imageMode(CENTER);
   textAlign(LEFT, CENTER);
+  colorMode(HSB);
+  noCursor();
   strokeWeight(5);
   objects = new ArrayList();
   myShip = new Ship();

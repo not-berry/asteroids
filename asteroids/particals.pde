@@ -34,7 +34,9 @@ class ShipThrust extends Particals{
     fill(f, map(t, 0,5, 0,255));
     pushMatrix();
     translate(loc.x - dir.x*200, loc.y - dir.y*250);
-    //rotate(dir.heading());
+    
+    rotate(dir.heading());
+    translate(0,random(-5,5));
     //triangle(-7,-10, 7,-10, 0,1);
     circle(0,0,10);
     popMatrix();
@@ -42,5 +44,20 @@ class ShipThrust extends Particals{
   
   void act() {
     t--;
+  }
+}
+
+class Dust extends Particals {
+  
+  Dust(float x, float y) {
+    super(x, y, random(-1,1), random(-1,1), 5);
+  }
+  
+  void show() {
+    
+  }
+  
+  void act() {
+    
   }
 }

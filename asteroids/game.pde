@@ -15,7 +15,10 @@ void game() {
     if(currentObject.lives <= 0) objects.remove(i);
   }
   
-    
+  if(myShip.lives == 0) {
+    textAlign(CENTER, CENTER);
+    mode = "gameover";
+  }
   
   if(numOfAst <= 3 && int(random(200)) == 0) objects.add(new Meteor());
   
@@ -24,5 +27,5 @@ void game() {
   text(round(score), 5,40);
   
   //myShip.show();
-  myShip.act();
+  //myShip.act();
 }

@@ -5,8 +5,8 @@ class Meteor extends GameObject{
   boolean add;
   Meteor() {
     super(random(width),random(height), 1,1, 3);
-    if(round(random(1)) == 0) loc.x = -75;
-    else loc.y = -75;
+    if(round(random(1)) == 0) loc.x = -100;
+    else loc.y = -100;
     vel.setMag(random(1,3));
     vel.rotate(random(radians(360)));
     d = lives*50;
@@ -60,6 +60,15 @@ class Meteor extends GameObject{
           lives = obj.lives = 0;
         }
       }
+    }
+    if(dist(loc.x,loc.y, myShip.loc.x,myShip.loc.y) < d/2+20 && myShip.shieldTime <= 0) {
+      myShip.lives -= 1;
+      if(lives > 1) {
+        objects.add(new Meteor(loc.x, loc.y, lives-1));
+        objects.add(new Meteor(loc.x, loc.y, lives-1));
+      } else numOfAst -= 0.25;
+      lives = 0;
+      myShip.shieldTime = 300;
     }
   }
   
