@@ -33,7 +33,7 @@ class ShipThrust extends Particals{
     noStroke();
     fill(f, map(t, 0,5, 0,255));
     pushMatrix();
-    translate(loc.x - dir.x*200, loc.y - dir.y*250);
+    translate(loc.x - dir.x*38, loc.y - dir.y*38);
     
     rotate(dir.heading());
     translate(0,random(-5,5));

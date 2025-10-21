@@ -20,12 +20,13 @@ void game() {
     mode = "gameover";
   }
   
-  if(numOfAst <= 3 && int(random(200)) == 0) objects.add(new Meteor());
+  if(shiftkey) gs = 0.5;
+  else gs = 1;
+  
+  if(numOfAst <= 3 && int(random(100)) == 0) objects.add(new Meteor());
   
   textSize(100);
   fill(white);
   text(round(score), 5,40);
   
-  //myShip.show();
-  //myShip.act();
 }

@@ -37,14 +37,14 @@ class Meteor extends GameObject{
   }
   
   void act() {
-    loc.add(vel);
+    loc.add(vel.x*gs, vel.y*gs);
     
     wrapAround(100);
     
     checkForCollisions();
     
-    if(add) rotation += abs(vel.x)+abs(vel.y);
-    else rotation -= abs(vel.x)+abs(vel.y);
+    if(add) rotation += (abs(vel.x)+abs(vel.y))*gs;
+    else rotation -= (abs(vel.x)+abs(vel.y))*gs;
   }
   
   void checkForCollisions() {

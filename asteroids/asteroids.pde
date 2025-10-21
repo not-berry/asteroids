@@ -12,11 +12,13 @@ color red = #E34335;
 String mode = "game";
 
 
-boolean upkey, downkey, leftkey, rightkey, spacekey;
+boolean upkey, downkey, leftkey, rightkey, spacekey, shiftkey;
 Ship myShip;
 
 float numOfAst = 0;
 float score = 0;
+
+float gs = 1;
 
 float bulletCooldown = 10;
 
@@ -51,6 +53,7 @@ void keyPressed() {
   if(keyCode == LEFT || keyCode == 'a' || keyCode == 'A') leftkey = true;
   if(keyCode == RIGHT || keyCode == 'd' || keyCode == 'D') rightkey = true;
   if(keyCode == ' ') spacekey = true;
+  if(keyCode == SHIFT) shiftkey = true;
 }
 
 void keyReleased() {
@@ -59,4 +62,5 @@ void keyReleased() {
   if(keyCode == LEFT || keyCode == 'a' || keyCode == 'A') leftkey = false;
   if(keyCode == RIGHT || keyCode == 'd' || keyCode == 'D') rightkey = false;
   if(keyCode == ' ') spacekey = false;
+  if(keyCode == SHIFT) shiftkey = false;
 }
