@@ -18,20 +18,7 @@ class Ship extends GameObject{
     rotate(dir.heading());
     noFill();
     stroke(white);
-    //triangle(-15,-18, -15,18, 25,0);
-    //circle(7,0, 10);
-    //rect(-15,-7, -3,14);
-    //triangle(-12,-17, 0,-14, -10,-22);
-    //triangle(-12,17, 0,14, -10,22);
     
-    //rect(-25,-25, 50,50, 20);
-    //rect(0,-15, 20,30, 10);
-    //rect(-10,-25, 20,-7, 20,20,0,0);
-    //rect(-10,25, 20,7, 0,0,20,20);
-    //rect(-25,-10, -7,20, 20,0,0,20);
-    
-    //triangle(30,-7, -10,-7, -10,-20);
-    //triangle(30,7, -10,7, -10,20);
     translate(10,0);
     line(30,-7, -18,-7);
     line(30,7, -18,7);
@@ -80,6 +67,8 @@ class Ship extends GameObject{
     if(spacekey && bulletCooldown <=0) {
       objects.add(new Bullet(-1.9) );
       objects.add(new Bullet(1.9) );
+      pew.stop();
+      pew.play();
       bulletCooldown = 30;
     }
   }

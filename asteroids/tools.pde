@@ -5,3 +5,14 @@ void c(color s, color f, float sw) {
   if(f == noFill) noFill();
   strokeWeight(sw);
 }
+
+
+
+void click() {
+  mouseReleased = false;
+  if(mousePressed) wasPressed = true;
+  if(wasPressed && !mousePressed) {
+    mouseReleased = true;
+    wasPressed = false;
+  }
+}
