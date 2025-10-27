@@ -101,9 +101,9 @@ void keyReleased() {
 }
 
 void mousePressed() {
-  if(mode == "game") mode = "pause";
-  else if(mode == "pause") mode = "game";
-  if(mode == "game" || mode == "pause") {
+  if(mode == "game" && mouseButton == LEFT) mode = "pause";
+  else if(mode == "pause" && mouseButton == LEFT) mode = "game";
+  if(mode == "game" && mouseButton == LEFT || mode == "pause" && mouseButton == LEFT) {
     clack.stop();
     clack.play();
   }

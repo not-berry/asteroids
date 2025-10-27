@@ -10,7 +10,7 @@ void intro() {
   
   myButtons[0].show();
   myButtons[0].act();
-  if(myButtons[0].clicked) {
+  if(myButtons[0].clicked && mouseButton == LEFT) {
     music.stop();
     clack.play();
     mode = "game";

@@ -11,7 +11,7 @@ void gameover() {
   
   myButtons[1].show();
   myButtons[1].act();
-  if(myButtons[1].clicked) {
+  if(myButtons[1].clicked && mouseButton == LEFT) {
     dun.stop();
     clack.play();
     music.play();
