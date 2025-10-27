@@ -37,7 +37,6 @@ class ShipThrust extends Particals{
     
     rotate(dir.heading());
     translate(0,random(-5,5));
-    //triangle(-7,-10, 7,-10, 0,1);
     circle(0,0,10);
     popMatrix();
   }
@@ -49,15 +48,28 @@ class ShipThrust extends Particals{
 
 class Dust extends Particals {
   
-  Dust(float x, float y) {
-    super(x, y, random(-1,1), random(-1,1), 5);
+  color col;
+  float tmax, dist;
+  
+  Dust(float x, float y, float time, float _dist, color _col) {
+    super(x, y, random(-1,1), random(-1,1), time);
+    dir.rotate(random(radians(360)));
+    col = _col;
+    dist = _dist;
+    tmax = time;
   }
   
   void show() {
-    
+    noStroke();
+    fill(col, map(t, 0,tmax, 0,255));
+    pushMatrix();
+    translate(loc.x, loc.y);
+    circle(0,0,10);
+    popMatrix();
   }
   
   void act() {
-    
+    loc.add(dir.x*dist, dir.y*dist);
+    t--;
   }
 }

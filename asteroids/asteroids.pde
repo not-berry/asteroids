@@ -5,10 +5,10 @@ color black = 0;
 color white = 255;
 color noStroke = #644949;
 color noFill = #5F4444;
-color blue = #3576E3;
 color yellow = #E3BA35;
 color orange = #E37835;
 color red = #E34335;
+color blue = #A0F8FF;
 
 PFont f;
 
@@ -28,6 +28,9 @@ Ship myShip;
 
 float numOfAst = 0;
 float score = 0;
+float highscore = 0;
+
+float numofe = 0;
 
 float gs = 1;
 
@@ -49,10 +52,12 @@ void setup() {
   myShip = new Ship();
   objects.add(myShip);
   
+  
   partical = new ArrayList();
   
-  myButtons = new Button[1];
+  myButtons = new Button[2];
   myButtons[0] = new Button(white,black, white, width/2,height-200, 200,100, 10, 5, "PLAY", 75, false, "plus.jpg");
+  myButtons[1] = new Button(white,black, white, width/2,height-200, 460,100, 10, 5, "CONTINUE?", 75, false, "plus.jpg");
   
   astgif = new gif(width/2+400, height/2+400, 800, 800, "frame_", 20, "_delay-0.06s.gif");
   
@@ -73,6 +78,8 @@ void draw() {
   else if(mode == "pause") pause();
   
   click();
+  
+  //println(partical.size());
 }
 
 void keyPressed() {

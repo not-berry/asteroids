@@ -43,12 +43,11 @@ class Ship extends GameObject{
   }
   
   void act() {
-    //dir.x = dir.y = 0.5;
     loc.add(dir.x*v, dir.y*v);
     bulletCooldown--;
     shieldRotate+=5;
     shieldTime--;
-    if(!upkey && !downkey) v *= 0.96;
+    if(!upkey && !downkey) v *= 0.94;
     
     if(upkey && v < 10) v+=0.1;
     if(downkey && v > -10) v-=0.05;

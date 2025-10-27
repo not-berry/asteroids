@@ -1,3 +1,4 @@
+
 class Meteor extends GameObject{
   
   PShape s;
@@ -7,7 +8,7 @@ class Meteor extends GameObject{
     super(random(width),random(height), 1,1, 3);
     if(round(random(1)) == 0) loc.x = -100;
     else loc.y = -100;
-    vel.setMag(random(1,3));
+    vel.setMag(random(1,2));
     vel.rotate(random(radians(360)));
     d = lives*50;
     numOfAst += 1;
@@ -17,7 +18,7 @@ class Meteor extends GameObject{
   
   Meteor(float x, float y, float l) {
     super(x,y, 1,1, l);
-    vel.setMag(random(1,3));
+    vel.setMag(random(1,2));
     vel.rotate(random(radians(360)));
     d = lives*50;
     leftorright();
@@ -52,7 +53,7 @@ class Meteor extends GameObject{
       GameObject obj = objects.get(i);
       if(obj instanceof Bullet) {
         if(dist(loc.x,loc.y, obj.loc.x,obj.loc.y) < d/2 + obj.d/2) {
-          score++;
+          for(int d = 0; d < 20/3*lives; d++) partical.add(new Dust(loc.x,loc.y, 50, 1, white));
           if(lives > 1) {
             objects.add(new Meteor(loc.x, loc.y, lives-1));
             objects.add(new Meteor(loc.x, loc.y, lives-1));
@@ -63,6 +64,7 @@ class Meteor extends GameObject{
     }
     if(dist(loc.x,loc.y, myShip.loc.x,myShip.loc.y) < d/2+20 && myShip.shieldTime <= 0) {
       myShip.lives -= 1;
+      for(int d = 0; d < 20/3*lives; d++) partical.add(new Dust(loc.x,loc.y, 50, 1, white));
       if(lives > 1) {
         objects.add(new Meteor(loc.x, loc.y, lives-1));
         objects.add(new Meteor(loc.x, loc.y, lives-1));

@@ -13,12 +13,18 @@ void game() {
     GameObject currentObject = objects.get(i);
     currentObject.show();
     currentObject.act();
+    if(currentObject.lives <= 0 && currentObject instanceof Meteor) score ++;
+    if(currentObject.lives <= 0 && currentObject instanceof Enemy) {
+      score += 5;
+      numofe--;
+    }
     if(currentObject.lives <= 0) objects.remove(i);
   }
   
   if(myShip.lives == 0) {
     textAlign(CENTER, CENTER);
     dun.play();
+    if(score > highscore) highscore = score;
     mode = "gameover";
   }
   
@@ -30,7 +36,12 @@ void game() {
     if(ts < 150) ts += 0.1;
   }
   
-  if(numOfAst <= 3 && int(random(100)) == 0) objects.add(new Meteor());
+  if(numOfAst <= 3 && int(random(80)) == 0) objects.add(new Meteor());
+  
+  if(numofe < 1 && (int)random(2000) == 0) {
+    objects.add(new Enemy() );
+    numofe++;
+  }
   
   textSize(100);
   fill(white);
