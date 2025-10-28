@@ -1,15 +1,11 @@
-class Enemy extends GameObject{
+class Enemy2 extends GameObject{
   
-  float timer;
-  boolean switched;
   
-  Enemy() {
+  Enemy2() {
     super(random(width),random(height), 1,1, 1);
     if(round(random(1)) == 0) loc.x = -100 + random(-10,10);
     else loc.y = -100 + random(-10,10);
     
-    timer = 400;
-    switched = false;
   }
   
   void show() {
@@ -17,17 +13,6 @@ class Enemy extends GameObject{
     translate(loc.x,loc.y);
     rotate(atan2(myShip.loc.y-loc.y,myShip.loc.x-loc.x));
     noFill();
-    
-    //pointer
-    strokeWeight(2);
-    stroke(white, map(timer, 400,0, 0,255));
-    if(timer < 0 && switched) stroke(red);
-    if(timer >= -100 && vel.x == 0 && vel.y == 0)line(-25,0, 2000,0);
-    
-    //laser
-    c(red, noFill, 11, 200);
-    if(timer < -100) line(-20,0, 2000,0);
-    
     
     //ship
     stroke(red);
@@ -55,17 +40,10 @@ class Enemy extends GameObject{
     wrapAround(100);
     
     
-    vel.x = 2;vel.y = 0;
-    if(loc.x > 50 && loc.x < width-50 && loc.y > 50 && loc.y < height-50) vel.setMag(0);
+    vel.x = 3;vel.y = 0;
     vel.rotate(atan2(myShip.loc.y-loc.y,myShip.loc.x-loc.x));
     loc.add(vel);
-    
-    
-    
-    if(vel.x == 0 && vel.y == 0) timer--;
-    if(timer % 10 == 0 && switched) switched = false;
-    else if(timer % 10 == 0 && !switched) switched = true;
-    
+
     for(int i = 0; i < objects.size();i++) {
       GameObject obj = objects.get(i);
       if(obj instanceof Bullet) {
@@ -80,11 +58,6 @@ class Enemy extends GameObject{
       myShip.lives--;
       myShip.shieldTime = 300;
       for(int d = 0; d < 20; d++) partical.add(new Dust(loc.x,loc.y, 50, 2, red));
-    }
-    
-    if(myShip.shieldTime <= 0 && timer < -100) {
-      myShip.lives--;
-      myShip.shieldTime = 300;
     }
   }
 }

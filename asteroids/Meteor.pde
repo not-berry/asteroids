@@ -30,8 +30,6 @@ class Meteor extends GameObject{
     pushMatrix();
     translate(loc.x,loc.y);
     rotate(radians(rotation));
-    //circle(0, 0, d);
-    //line(0, 0, d/2, 0);
     shape(s, 0,0);
     popMatrix();
     
@@ -84,8 +82,7 @@ class Meteor extends GameObject{
     s.noFill();
     s.stroke(white);
     float r = 10;
-    float rx = random(-r,r); float ry = random(-r,r);
-    s.vertex((-17+ry)*lives, (17+ry)*lives);
+    s.vertex((-17+random(-r,r))*lives, (17+random(-r,r))*lives);
     s.vertex(0,(25+random(-r,r))*lives);
     s.vertex((17+random(-r,r))*lives, (17+random(-r,r))*lives);
     s.vertex((25+random(-r,r))*lives,0);
@@ -93,7 +90,6 @@ class Meteor extends GameObject{
     s.vertex(0,(-25+random(-r,r))*lives);
     s.vertex((-17+random(-r,r))*lives, (-17+random(-r,r))*lives);
     s.vertex((-25+random(-r,r))*lives,0);
-    s.vertex((-17+ry)*lives, (17+ry)*lives);
-    s.endShape();
+    s.endShape(CLOSE);
   }
 }

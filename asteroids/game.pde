@@ -14,7 +14,7 @@ void game() {
     currentObject.show();
     currentObject.act();
     if(currentObject.lives <= 0 && currentObject instanceof Meteor) score ++;
-    if(currentObject.lives <= 0 && currentObject instanceof Enemy) {
+    if(currentObject.lives <= 0 && currentObject instanceof Enemy || currentObject.lives <= 0 && currentObject instanceof Enemy2) {
       score += 5;
       numofe--;
     }
@@ -36,10 +36,11 @@ void game() {
     if(ts < 150) ts += 0.1;
   }
   
-  if(numOfAst <= 3 && int(random(80)) == 0) objects.add(new Meteor());
+  if(numOfAst <= 4 && int(random(80)) == 0) objects.add(new Meteor());
   
-  if(numofe < 1 && (int)random(2000) == 0) {
-    objects.add(new Enemy() );
+  if(numofe < 1 && (int)random(500) == 0) {
+    if((int)random(2) == 0) objects.add(new Enemy() );
+    else objects.add(new Enemy2() );
     numofe++;
   }
   
