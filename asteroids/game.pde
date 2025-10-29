@@ -38,9 +38,14 @@ void game() {
   
   if(numOfAst <= 4 && int(random(80)) == 0) objects.add(new Meteor());
   
-  if(numofe < 1 && (int)random(500) == 0) {
-    if((int)random(2) == 0) objects.add(new Enemy() );
-    else objects.add(new Enemy2() );
+  //if(numofe < 1 && (int)random(500) == 0) {
+  //  if((int)random(2) == 0) objects.add(new Enemy() );
+  //  else objects.add(new Enemy2() );
+  //  numofe++;
+  //}
+  
+  if(numofe < 1 && (int)random(10) == 0) {
+    objects.add(new Enemy2() );
     numofe++;
   }
   
