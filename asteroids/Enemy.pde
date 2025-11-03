@@ -71,7 +71,7 @@ class Enemy extends GameObject{
       if(obj instanceof Bullet) {
         if(dist(loc.x,loc.y, obj.loc.x,obj.loc.y) < 40 + obj.d/2) {
           lives = 0;
-          for(int d = 0; d < 20; d++) partical.add(new Dust(loc.x,loc.y, 50, 2, red));
+          for(int d = 0; d < 20; d++) particle.add(new Dust(loc.x,loc.y, 50, 2, red));
         }
       }
     }
@@ -79,7 +79,7 @@ class Enemy extends GameObject{
       lives = 0;
       myShip.lives--;
       myShip.shieldTime = 300;
-      for(int d = 0; d < 20; d++) partical.add(new Dust(loc.x,loc.y, 50, 2, red));
+      for(int d = 0; d < 20; d++) particle.add(new Dust(loc.x,loc.y, 50, 2, red));
     }
     
     if(myShip.shieldTime <= 0 && timer < -100) {

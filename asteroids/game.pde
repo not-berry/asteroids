@@ -2,11 +2,11 @@ void game() {
   background(0);
   rectMode(CORNER);
   
-  for(int i = 0; i < partical.size(); i++) {
-    Particals currentObject = partical.get(i);
+  for(int i = 0; i < particle.size(); i++) {
+    Particles currentObject = particle.get(i);
     currentObject.show();
     currentObject.act();
-    if(currentObject.t <= 0) partical.remove(i);
+    if(currentObject.t <= 0) particle.remove(i);
   }
   
   for(int i = 0; i < objects.size(); i++) {

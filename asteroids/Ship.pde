@@ -55,7 +55,7 @@ class Ship extends GameObject{
     if(rightkey) dir.rotate(radians(4));
     
     
-    if(upkey) partical.add(new ShipThrust());
+    if(upkey) particle.add(new ShipThrust());
     
     wrapAround(50);
     

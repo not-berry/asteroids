@@ -39,7 +39,7 @@ float bulletCooldown = 10;
 
 ArrayList<GameObject> objects;
 
-ArrayList<Particals> partical;
+ArrayList<Particles> particle;
 
 void setup() {
   size(800,800);
@@ -52,7 +52,7 @@ void setup() {
   objects.add(myShip);
   
   
-  partical = new ArrayList();
+  particle = new ArrayList();
   
   myButtons = new Button[2];
   myButtons[0] = new Button(white,black, white, width/2,height-200, 200,100, 10, 5, "PLAY", 75, false, "plus.jpg");

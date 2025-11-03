@@ -20,7 +20,7 @@ void gameover() {
     numofe = 0;
     numOfAst = 0;
     for(int i = objects.size(); i > 0; i--) objects.remove(i-1);
-    for(int i = partical.size(); i > 0; i--) partical.remove(i-1);
+    for(int i = particle.size(); i > 0; i--) particle.remove(i-1);
     myShip = new Ship();
     objects.add(myShip);
     mode = "intro";
