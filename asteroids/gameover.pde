@@ -17,7 +17,6 @@ void gameover() {
     music.play();
     score = 0;
     ts = 150;
-    gs = 1;
     numofe = 0;
     numOfAst = 0;
     for(int i = objects.size(); i > 0; i--) objects.remove(i-1);

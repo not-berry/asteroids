@@ -28,24 +28,21 @@ void game() {
     mode = "gameover";
   }
   
-  if(shiftkey && ts > 30) {
-    gs = 0.1;
-    ts -= 1;
-  } else {
-    gs = 1;
-    if(ts < 150) ts += 0.1;
+  if(ts <= 30) {
+    for(int i = 0; i < objects.size(); i++) {
+      objects.get(i).held = false;
+    }
   }
+  
+  if(held && ts > 30) {
+    ts -= .5;
+  } else if(ts < 150) ts += 0.1;
   
   if(numOfAst <= 4 && int(random(80)) == 0) objects.add(new Meteor());
   
-  //if(numofe < 1 && (int)random(500) == 0) {
-  //  if((int)random(2) == 0) objects.add(new Enemy() );
-  //  else objects.add(new Enemy2() );
-  //  numofe++;
-  //}
-  
-  if(numofe < 1 && (int)random(10) == 0) {
-    objects.add(new Enemy2() );
+  if(numofe < 1 && (int)random(500) == 0) {
+    if((int)random(2) == 0) objects.add(new Enemy() );
+    else objects.add(new Enemy2() );
     numofe++;
   }
   
@@ -62,6 +59,14 @@ void game() {
   c(white,white, 5);
   rect(width-165,17.5, ts,45, 20);
   
+  
+  for(int i = 0; i < objects.size(); i++) {
+    GameObject currentObject = objects.get(i);
+    if(currentObject.held == true) {
+      currentObject.loc.x = mouseX;
+      currentObject.loc.y = mouseY;
+    }
+  }
 }
 
 void heart(float x, float y) {

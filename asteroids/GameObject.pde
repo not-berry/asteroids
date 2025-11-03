@@ -2,6 +2,7 @@ class GameObject {
   
   float lives, bulletCooldown, d;
   PVector loc, vel;
+  boolean held;
   
   GameObject(float lx, float ly, float vx, float vy, float life) {
     loc = new PVector(lx,ly);

@@ -22,8 +22,9 @@ gif astgif;
 
 SoundFile pew, dun, clack, music;
 
+boolean held;
 
-boolean upkey, downkey, leftkey, rightkey, spacekey, shiftkey;
+boolean upkey, downkey, leftkey, rightkey, spacekey;
 Ship myShip;
 
 float numOfAst = 0;
@@ -31,8 +32,6 @@ float score = 0;
 float highscore = 0;
 
 float numofe = 0;
-
-float gs = 1;
 
 float ts = 150;
 
@@ -78,8 +77,6 @@ void draw() {
   else if(mode == "pause") pause();
   
   click();
-  
-  //println(partical.size());
 }
 
 void keyPressed() {
@@ -88,7 +85,6 @@ void keyPressed() {
   if(keyCode == LEFT || keyCode == 'a' || keyCode == 'A') leftkey = true;
   if(keyCode == RIGHT || keyCode == 'd' || keyCode == 'D') rightkey = true;
   if(keyCode == ' ') spacekey = true;
-  if(keyCode == SHIFT) shiftkey = true;
 }
 
 void keyReleased() {
@@ -97,14 +93,28 @@ void keyReleased() {
   if(keyCode == LEFT || keyCode == 'a' || keyCode == 'A') leftkey = false;
   if(keyCode == RIGHT || keyCode == 'd' || keyCode == 'D') rightkey = false;
   if(keyCode == ' ') spacekey = false;
-  if(keyCode == SHIFT) shiftkey = false;
 }
 
 void mousePressed() {
-  if(mode == "game" && mouseButton == LEFT) mode = "pause";
-  else if(mode == "pause" && mouseButton == LEFT) mode = "game";
-  if(mode == "game" && mouseButton == LEFT || mode == "pause" && mouseButton == LEFT) {
+  held = true;
+  for(int i = 0; i < objects.size(); i++) {
+    GameObject currentObject = objects.get(i);
+    if(currentObject instanceof Meteor && dist(mouseX,mouseY, currentObject.loc.x,currentObject.loc.y) < 25*currentObject.lives || currentObject instanceof Enemy && dist(mouseX,mouseY, currentObject.loc.x,currentObject.loc.y) < 40 || currentObject instanceof Enemy2 && dist(mouseX,mouseY, currentObject.loc.x,currentObject.loc.y) < 40) {
+      currentObject.held = true;
+    }
+  }
+  
+  if(mode == "game" &&  mouseButton == RIGHT) mode = "pause";
+  else if(mode == "pause" &&  mouseButton == RIGHT) mode = "game";
+  if(mode == "game" && mouseButton == RIGHT || mode == "pause" && mouseButton == RIGHT) {
     clack.stop();
     clack.play();
+  }
+}
+
+void mouseReleased() {
+  held = false;
+  for(int i = 0; i < objects.size(); i++) {
+    objects.get(i).held = false;
   }
 }

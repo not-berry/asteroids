@@ -1,7 +1,5 @@
 class Enemy2 extends GameObject{
   
-  float rotation;
-  
   Enemy2() {
     super(random(width),random(height), 1,1, 1);
     if(round(random(1)) == 0) loc.x = -100 + random(-10,10);
@@ -40,12 +38,9 @@ class Enemy2 extends GameObject{
   void act() {
     wrapAround(100);
     
-    rotation = vel.heading();
-    println(atan2(myShip.loc.y-loc.y,myShip.loc.x-loc.x) - vel.heading());
-    
     vel.setMag(3);
-    if(atan2(myShip.loc.y-loc.y,myShip.loc.x-loc.x) - vel.heading() > 0) vel.rotate(radians(1));
-    else vel.rotate(radians(-1));
+    if(atan2(myShip.loc.y-loc.y,myShip.loc.x-loc.x) - vel.heading() > 0) vel.rotate(radians(2));
+    else vel.rotate(radians(-2));
     loc.add(vel);
 
     for(int i = 0; i < objects.size();i++) {
@@ -57,11 +52,11 @@ class Enemy2 extends GameObject{
         }
       }
     }
-    //if(dist(loc.x,loc.y, myShip.loc.x,myShip.loc.y) < 60 && myShip.shieldTime <= 0) {
-    //  lives = 0;
-    //  myShip.lives--;
-    //  myShip.shieldTime = 300;
-    //  for(int d = 0; d < 20; d++) partical.add(new Dust(loc.x,loc.y, 50, 2, red));
-    //}
+    if(dist(loc.x,loc.y, myShip.loc.x,myShip.loc.y) < 60 && myShip.shieldTime <= 0) {
+      lives = 0;
+      myShip.lives--;
+      myShip.shieldTime = 300;
+      for(int d = 0; d < 20; d++) partical.add(new Dust(loc.x,loc.y, 50, 2, red));
+    }
   }
 }

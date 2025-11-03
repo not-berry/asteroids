@@ -1,4 +1,3 @@
-
 class Meteor extends GameObject{
   
   PShape s;
@@ -11,6 +10,7 @@ class Meteor extends GameObject{
     vel.setMag(random(1,2));
     vel.rotate(random(radians(360)));
     d = lives*50;
+    held = false;
     numOfAst += 1;
     leftorright();
     shaped();
@@ -36,14 +36,14 @@ class Meteor extends GameObject{
   }
   
   void act() {
-    loc.add(vel.x*gs, vel.y*gs);
+    loc.add(vel.x, vel.y);
     
     wrapAround(100);
     
     checkForCollisions();
     
-    if(add) rotation += (abs(vel.x)+abs(vel.y))*gs;
-    else rotation -= (abs(vel.x)+abs(vel.y))*gs;
+    if(add) rotation += (abs(vel.x)+abs(vel.y));
+    else rotation -= (abs(vel.x)+abs(vel.y));
   }
   
   void checkForCollisions() {
